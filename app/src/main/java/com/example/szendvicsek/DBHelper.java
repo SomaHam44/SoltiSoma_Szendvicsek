@@ -53,6 +53,6 @@ public class DBHelper extends SQLiteOpenHelper {
     public Cursor kereses(String ar) {
         SQLiteDatabase db = this.getWritableDatabase();
         return db.rawQuery(" SELECT * "  + " FROM " + TABLE_NAME +
-                " WHERE " +  ar + " <= ? ", new String[]{ar});
+                " WHERE " +  ar + " >= ? ", new String[]{ar});
     }
 }
