@@ -45,7 +45,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
     private void szendvicsKereso() {
         SharedPreferences sharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
-        String arString = sharedPreferences.getString("ar", "0");
+        String arString = sharedPreferences.getString("ar", String.valueOf(MainActivity.ertek));
         Cursor kereses = adatbazis.kereses(arString);
 
         int szendvicsekSzama = kereses.getCount();

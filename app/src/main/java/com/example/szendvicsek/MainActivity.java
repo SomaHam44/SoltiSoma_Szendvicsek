@@ -9,11 +9,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.text.BreakIterator;
+
 public class MainActivity extends AppCompatActivity {
     private Button btnFelvetel;
     private Button btnKeres;
     private EditText editAr;
     private DBHelper adatbazis;
+    private static BreakIterator editAra;
+    public static  int ertek = Integer.parseInt(editAra.getText().toString().trim());
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
