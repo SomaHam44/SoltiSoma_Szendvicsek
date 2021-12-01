@@ -2,6 +2,7 @@ package com.example.szendvicsek;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -47,5 +48,11 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put(COL_ELKESZITES, elkeszites);
         values.put(COL_AR, ar);
         return db.insert(TABLE_NAME, null, values) != -1;
+    }
+
+    public Cursor kereses(String ar) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.rawQuery(" SELECT * "  + " FROM " + TABLE_NAME +
+                " WHERE " +  ar + " <= ? ", new String[]{ar});
     }
 }

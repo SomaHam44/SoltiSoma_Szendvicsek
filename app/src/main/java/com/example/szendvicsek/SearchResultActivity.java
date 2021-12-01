@@ -21,6 +21,7 @@ public class SearchResultActivity extends AppCompatActivity {
         init();
         textKereso.setMovementMethod(new ScrollingMovementMethod());
 
+
         btnVisszateres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
