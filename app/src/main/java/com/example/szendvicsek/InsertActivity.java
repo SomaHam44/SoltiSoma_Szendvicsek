@@ -37,6 +37,7 @@ public class InsertActivity extends AppCompatActivity {
                 String elkeszitesiIdoString = editElkeszitesiIdo.getText().toString().trim();
                 String arString = editAr.getText().toString().trim();
                 if (nev.isEmpty() || elkeszitesiIdoString.isEmpty() || arString.isEmpty()) {
+                    btnFelvesz.setEnabled(false);
                     Toast.makeText(getApplicationContext(), "A leíráson kívül minden mező kitöltése kötelező", Toast.LENGTH_SHORT).show();
                 }
                 else {
