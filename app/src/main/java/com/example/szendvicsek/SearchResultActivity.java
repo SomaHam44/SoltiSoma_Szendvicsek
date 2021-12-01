@@ -2,7 +2,10 @@ package com.example.szendvicsek;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -20,6 +23,8 @@ public class SearchResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_result);
         init();
         textKereso.setMovementMethod(new ScrollingMovementMethod());
+        szendvicsKereso();
+
 
 
         btnVisszateres.setOnClickListener(new View.OnClickListener() {
@@ -36,5 +41,17 @@ public class SearchResultActivity extends AppCompatActivity {
         textKereso = findViewById(R.id.text_szendvicsek);
         btnVisszateres = findViewById(R.id.btn_visszatero);
         adatbazis = new DBHelper(this);
+    }
+
+    private void szendvicsKereso() {
+        SharedPreferences sharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
+        String arString = sharedPreferences.getString("ar", "0");
+        Cursor kereses = adatbazis.kereses(arString);
+
+        int szendvicsekSzama = kereses.getCount();
+        if (szendvicsekSzama == 0) {
+            textKereso.setText("Nincs ilyen olcsó szendvics " + arString);
+        }
+
     }
 }
