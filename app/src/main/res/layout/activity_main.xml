@@ -7,13 +7,17 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
+    <!--
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Ár"
         android:id="@+id/edit_ar"
         android:inputType="number"
+
         />
+       -->
+
 
     <Button
         android:layout_width="match_parent"

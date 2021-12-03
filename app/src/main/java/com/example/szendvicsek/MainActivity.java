@@ -14,8 +14,7 @@ import java.text.BreakIterator;
 public class MainActivity extends AppCompatActivity {
     private Button btnFelvetel;
     private Button btnKeres;
-    private static EditText editAr;
-    public static int arunk = Integer.parseInt(editAr.getText().toString().trim());
+    //private EditText editAr;
     private DBHelper adatbazis;
 
     @Override
@@ -36,6 +35,17 @@ public class MainActivity extends AppCompatActivity {
         btnKeres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent keresesre = new Intent(MainActivity.this, SearchResultActivity.class);
+                startActivity(keresesre);
+                finish();
+
+                /*A feladat leellenőrzése során az alkalmazás összeomlott, ezért egy másik megoldási lehetőséget próbáltam
+                alkalmazni,a MainActivityben található EditTextet átraktam a SearchResultActivitybe,
+                ahol a Keresés gombra kattintva ezáltal kiadta a szendvicseket vagy azt, hogy a ilyen olcsó szendvics nincs!
+                 */
+
+
+                /*
                 String arString = editAr.getText().toString().trim();
                 if (arString.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "A mező kitöltése kötelező!", Toast.LENGTH_SHORT).show();
@@ -52,7 +62,11 @@ public class MainActivity extends AppCompatActivity {
                     catch (NumberFormatException e) {
                         Toast.makeText(getApplicationContext(), "Az árnak számnak kell lennie!", Toast.LENGTH_SHORT).show();
                     }
+
+
                 }
+                */
+
             }
         });
     }
@@ -60,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     private void init() {
         btnFelvetel = findViewById(R.id.btn_felvetel);
         btnKeres = findViewById(R.id.btn_kereses);
-        editAr = findViewById(R.id.edit_ar);
+        //editAr = findViewById(R.id.edit_ar);
         adatbazis = new DBHelper(this);
 
     }

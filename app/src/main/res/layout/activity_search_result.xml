@@ -7,12 +7,21 @@
     tools:context=".SearchResultActivity"
     android:orientation="vertical">
 
-    <TextView
+    <EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Ár"
+    android:id="@+id/e_ar"
+    android:inputType="number"
+    />
+
+
+
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="25sp"
-        android:scrollbars="vertical"
-        android:id="@+id/text_szendvicsek"
+        android:text="Keresés"
+        android:id="@+id/btn_keres"
         />
 
     <Button
@@ -20,6 +29,14 @@
         android:layout_height="wrap_content"
         android:text="Vissza"
         android:id="@+id/btn_visszatero"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:scrollbars="vertical"
+        android:id="@+id/text_szendvicsek"
         />
 
 </LinearLayout>
