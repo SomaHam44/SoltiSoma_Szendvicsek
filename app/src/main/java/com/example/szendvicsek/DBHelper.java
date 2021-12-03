@@ -51,8 +51,13 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public Cursor kereses(String ar) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         return db.rawQuery(" SELECT * "  + " FROM " + TABLE_NAME +
                 " WHERE " +  COL_AR + " <= ? ", new String[]{ar});
+    }
+
+    public int torles(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.delete(TABLE_NAME, COL_ID + " = ? ", new String[]{id});
     }
 }
