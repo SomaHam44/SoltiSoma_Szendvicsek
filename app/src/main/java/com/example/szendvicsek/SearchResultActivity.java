@@ -23,8 +23,7 @@ public class SearchResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_search_result);
         init();
         textKereso.setMovementMethod(new ScrollingMovementMethod());
-        szendvicsKereso();
-
+        szendvicskereso();
 
 
         btnVisszateres.setOnClickListener(new View.OnClickListener() {
@@ -35,23 +34,17 @@ public class SearchResultActivity extends AppCompatActivity {
                 finish();
             }
         });
+
     }
 
-    private void init() {
-        textKereso = findViewById(R.id.text_szendvicsek);
-        btnVisszateres = findViewById(R.id.btn_visszatero);
-        adatbazis = new DBHelper(this);
-    }
-
-    private void szendvicsKereso() {
-
+    private void szendvicskereso() {
         Cursor kereses = adatbazis.kereses(String.valueOf(MainActivity.arunk));
         StringBuilder builder = new StringBuilder();
 
         if (kereses.getCount() == 0) {
-            textKereso.setText("Nincs ilyen olcsó szendvics: " + MainActivity.arunk);
-        }
-        else {
+            builder.append("Nincs ilyen olcsó szendvics ").append(MainActivity.arunk);
+
+        } else {
             while (kereses.moveToNext()) {
                 builder.append("ID: ").append(kereses.getInt(0));
                 builder.append(System.lineSeparator());
@@ -63,11 +56,19 @@ public class SearchResultActivity extends AppCompatActivity {
                 builder.append(System.lineSeparator());
                 builder.append("Ár (Ft) : ").append(kereses.getInt(4));
                 builder.append(System.lineSeparator());
-                builder.append(System.lineSeparator());
+
 
             }
         }
         textKereso.setText(builder.toString());
 
     }
-}
+
+    public void init() {
+        textKereso = findViewById(R.id.text_szendvicsek);
+        btnVisszateres = findViewById(R.id.btn_visszatero);
+        adatbazis = new DBHelper(this);
+
+    }
+
+    }
