@@ -44,14 +44,30 @@ public class SearchResultActivity extends AppCompatActivity {
     }
 
     private void szendvicsKereso() {
-        SharedPreferences sharedPreferences = getSharedPreferences("Data", Context.MODE_PRIVATE);
-        String arString = sharedPreferences.getString("ar", "0");
-        Cursor kereses = adatbazis.kereses(arString);
 
-        int szendvicsekSzama = kereses.getCount();
-        if (szendvicsekSzama == 0) {
-            textKereso.setText("Nincs ilyen olcsó szendvics " + arString);
+        Cursor kereses = adatbazis.kereses(String.valueOf(MainActivity.arunk));
+        StringBuilder builder = new StringBuilder();
+
+        if (kereses.getCount() == 0) {
+            textKereso.setText("Nincs ilyen olcsó szendvics: " + MainActivity.arunk);
         }
+        else {
+            while (kereses.moveToNext()) {
+                builder.append("ID: ").append(kereses.getInt(0));
+                builder.append(System.lineSeparator());
+                builder.append("Név: ").append(kereses.getString(1));
+                builder.append(System.lineSeparator());
+                builder.append("Leírás: ").append(kereses.getString(2));
+                builder.append(System.lineSeparator());
+                builder.append("Elkészítési idő (perc) : ").append(kereses.getInt(3));
+                builder.append(System.lineSeparator());
+                builder.append("Ár (Ft) : ").append(kereses.getInt(4));
+                builder.append(System.lineSeparator());
+                builder.append(System.lineSeparator());
+
+            }
+        }
+        textKereso.setText(builder.toString());
 
     }
 }

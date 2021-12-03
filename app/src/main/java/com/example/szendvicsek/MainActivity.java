@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private Button btnFelvetel;
     private Button btnKeres;
     private EditText editAr;
+    public static int arunk;
     private DBHelper adatbazis;
 
     @Override
@@ -61,5 +62,6 @@ public class MainActivity extends AppCompatActivity {
         btnKeres = findViewById(R.id.btn_kereses);
         editAr = findViewById(R.id.edit_ar);
         adatbazis = new DBHelper(this);
+        arunk = Integer.parseInt(editAr.getText().toString());
     }
 }
